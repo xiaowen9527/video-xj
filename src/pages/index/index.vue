@@ -23,14 +23,8 @@
         //     pageSize:pageSize.value,
         // }
 
-        // let params = {
-        //     'pageSize': 10,
-        //     'pageNo': '1',
-        //     'appType': '2',
-        //     'version': '1.8.141'
-        // }
         // axios.get('/getVideoContent.action', params).then(res=>{
-        //     console.log(res,'---res');
+        //     articleList.value = res.data
         // }).catch(err=>{
         //     console.log(err,'---err');
         // })

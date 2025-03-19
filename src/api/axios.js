@@ -37,7 +37,31 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (response) => {
-        return response;
+
+        if (response.status === 200) {
+            return response.data; 
+        }else{
+            if(response.data.statusCode === 401){
+                uni.showToast({
+                    title: '请重新登录',
+                    icon: 'none',
+                    duration: 2000,
+                    success: () => {
+                        setTimeout(() => {
+                            uni.reLaunch({
+                                url: '/pages/login/login'
+                            });
+                        }, 2000);
+                    }
+                });
+            }else{
+                uni.showToast({
+                    title: '请求出错（'+response.data.statusCode+')',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
+        }
     },
     (err) => {
         return Promise.reject(err.response);
